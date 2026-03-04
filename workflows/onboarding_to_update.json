@@ -1,0 +1,89 @@
+{
+  "name": "Pipeline B - Onboarding to Update v2",
+  "nodes": [
+    {
+      "id": "node-1",
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [200, 300],
+      "parameters": {}
+    },
+    {
+      "id": "node-2",
+      "name": "Set Account Inputs",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3,
+      "position": [420, 300],
+      "parameters": {
+        "mode": "manual",
+        "fields": {
+          "values": [
+            { "name": "account_id", "type": "stringValue", "stringValue": "acme_fire_001" },
+            { "name": "onboarding_path", "type": "stringValue", "stringValue": "/project/dataset/onboarding/acme_fire_001.txt" },
+            { "name": "prompt_template", "type": "stringValue", "stringValue": "/project/config/prompt_templates/base_system_prompt.txt" }
+          ]
+        },
+        "include": "none",
+        "options": {}
+      }
+    },
+    {
+      "id": "node-3",
+      "name": "Apply Onboarding Patch",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [640, 300],
+      "parameters": {
+        "command": "python /project/scripts/apply_onboarding_patch.py --base-memo /project/outputs/accounts/{{ $json.account_id }}/v1/memo.json --onboarding {{ $json.onboarding_path }} --out-memo /project/outputs/accounts/{{ $json.account_id }}/v2/memo.json --changelog /project/changelog/{{ $json.account_id }}.changes.json --account-id {{ $json.account_id }}"
+      }
+    },
+    {
+      "id": "node-4",
+      "name": "Generate Agent Spec v2",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [860, 300],
+      "parameters": {
+        "command": "python /project/scripts/generate_retell_spec.py --memo /project/outputs/accounts/{{ $('Set Account Inputs').item.json.account_id }}/v2/memo.json --version v2 --output /project/outputs/accounts/{{ $('Set Account Inputs').item.json.account_id }}/v2/agent_spec.json --prompt-template {{ $('Set Account Inputs').item.json.prompt_template }}"
+      }
+    },
+    {
+      "id": "node-5",
+      "name": "Log Completion",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3,
+      "position": [1080, 300],
+      "parameters": {
+        "mode": "manual",
+        "fields": {
+          "values": [
+            { "name": "status", "type": "stringValue", "stringValue": "Pipeline B complete" },
+            { "name": "account_id", "type": "stringValue", "stringValue": "={{ $('Set Account Inputs').item.json.account_id }}" },
+            { "name": "v2_memo_path", "type": "stringValue", "stringValue": "=/project/outputs/accounts/{{ $('Set Account Inputs').item.json.account_id }}/v2/memo.json" },
+            { "name": "v2_spec_path", "type": "stringValue", "stringValue": "=/project/outputs/accounts/{{ $('Set Account Inputs').item.json.account_id }}/v2/agent_spec.json" },
+            { "name": "changelog_path", "type": "stringValue", "stringValue": "=/project/changelog/{{ $('Set Account Inputs').item.json.account_id }}.changes.json" }
+          ]
+        },
+        "options": {}
+      }
+    }
+  ],
+  "connections": {
+    "Manual Trigger": {
+      "main": [[{ "node": "Set Account Inputs", "type": "main", "index": 0 }]]
+    },
+    "Set Account Inputs": {
+      "main": [[{ "node": "Apply Onboarding Patch", "type": "main", "index": 0 }]]
+    },
+    "Apply Onboarding Patch": {
+      "main": [[{ "node": "Generate Agent Spec v2", "type": "main", "index": 0 }]]
+    },
+    "Generate Agent Spec v2": {
+      "main": [[{ "node": "Log Completion", "type": "main", "index": 0 }]]
+    }
+  },
+  "active": false,
+  "settings": { "executionOrder": "v1" },
+  "tags": []
+}
