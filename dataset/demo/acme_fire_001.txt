@@ -1,0 +1,13 @@
+[00:00:05] Agent: Hi, this is a demo call setup for Acme Fire Protection. We handle fire suppression and alarm monitoring services.
+[00:00:14] Customer: Great, so what are your business hours?
+[00:00:18] Agent: We are open Monday through Friday 8am to 5pm pacific time. Our office is at 123 Main Street, Springfield, CA 94105.
+[00:00:28] Customer: What counts as an emergency?
+[00:00:32] Agent: An active fire, a sprinkler leak, or an alarm going off on site is considered an emergency. We also treat CO alarm activation as an emergency.
+[00:00:42] Customer: And what happens after hours?
+[00:00:46] Agent: After hours, the answering service should check if it is an emergency. If yes, collect the caller name, callback number, and address immediately, then try to transfer to the on-call technician. If no one answers, take a message and assure them we will call back urgently first thing.
+[00:01:02] Customer: What about non-emergencies?
+[00:01:05] Agent: For scheduling inspections, the caller should be routed to the main office line during business hours. For billing questions, route to accounting. Do not create sprinkler jobs in ServiceTrade unless approved by the service manager.
+[00:01:20] Customer: Is there anything about integrations I should know?
+[00:01:24] Agent: Yes. Never book in Jobber unless the caller is an existing verified customer. Always check before scheduling.
+[00:01:32] Customer: Thanks, that covers it for the demo.
+[00:01:35] Agent: Great. We handle sprinkler inspections, fire alarm monitoring, and extinguisher services. The on-call tech is the primary after-hours contact, and the service manager is secondary.
