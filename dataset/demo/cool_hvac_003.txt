@@ -1,0 +1,13 @@
+[00:00:03] Agent: Welcome to Cool HVAC Services. We specialize in air conditioning, heating, and ventilation systems.
+[00:00:12] Customer: What hours are you open?
+[00:00:15] Agent: Monday through Friday 8am to 5pm eastern time. Our office is at 789 Oak Avenue, Charlotte, NC 28201.
+[00:00:24] Customer: What would be considered an emergency?
+[00:00:27] Agent: A complete loss of heating in winter below 40 degrees outside, a refrigerant leak, or a burning smell from an HVAC unit is considered an emergency.
+[00:00:38] Customer: After hours handling?
+[00:00:41] Agent: Try the on-call HVAC tech first. If they do not answer, try the service manager. If no one answers, take a message with the address, type of system, and description of the issue. Mark it urgent for morning.
+[00:00:56] Customer: What about regular calls?
+[00:00:59] Agent: For scheduling maintenance or inspections, route to office. For general inquiries, route to office. For billing, route to accounting.
+[00:01:09] Customer: Any restrictions?
+[00:01:12] Agent: Never schedule same-day installs on the call. Always say installs require a site survey first. Do not provide warranty information on the phone; route warranty questions to the service team.
+[00:01:24] Customer: Got it, thanks.
+[00:01:26] Agent: The owner can also be reached for major escalations after hours.
