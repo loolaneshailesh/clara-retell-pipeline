@@ -1,0 +1,11 @@
+[00:00:05] Agent: You have reached TopRidge Roofing. We specialize in residential and commercial roof repairs, replacements, and inspections.
+[00:00:15] Customer: What are your hours?
+[00:00:17] Agent: We are open Monday through Friday 7am to 5pm central time. Our office is at 654 Birch Lane, Nashville, TN 37201.
+[00:00:26] Customer: What constitutes a roofing emergency?
+[00:00:29] Agent: An active roof leak during heavy rain causing interior water damage, a structural collapse of part of the roof, or visible major storm damage like a fallen tree on the roof is considered an emergency.
+[00:00:43] Customer: How do you handle those after hours?
+[00:00:46] Agent: The on-call crew lead is the first contact. If unavailable, try the service manager. Always collect caller name, phone, full address, and brief description of damage. Mark urgent. If no one answers, promise a morning callback.
+[00:01:01] Customer: What about regular calls?
+[00:01:04] Agent: For scheduling inspections or estimates, route to the main office. For billing, route to accounting.
+[00:01:12] Customer: Any restrictions I should know?
+[00:01:15] Agent: Never promise insurance claim outcomes on the phone. Do not book repairs without a site inspection first. Never quote prices on the call.
