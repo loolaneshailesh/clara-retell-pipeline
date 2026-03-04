@@ -1,0 +1,13 @@
+[00:00:04] Agent: Thank you for calling Swift Plumbing Services. We offer drain cleaning, leak repairs, water heater installation, and general plumbing.
+[00:00:15] Customer: What are your office hours?
+[00:00:18] Agent: Monday through Friday 7am to 6pm central time. Our office is at 456 River Road, Austin, TX 78701.
+[00:00:27] Customer: What do you consider an emergency?
+[00:00:30] Agent: A burst pipe, no hot water in winter, sewage backup, or active water leak causing damage is considered an emergency.
+[00:00:40] Customer: Who do you call after hours for emergencies?
+[00:00:44] Agent: First we try the on-call plumber. If they don't answer we escalate to the owner. If nobody answers within two attempts, take a detailed message with address and nature of leak, and mark it urgent.
+[00:00:58] Customer: Non-emergency calls?
+[00:01:01] Agent: For scheduling, route to office line. For estimates, route to the sales team. For billing, route to accounting.
+[00:01:10] Customer: Any software restrictions?
+[00:01:13] Agent: Do not schedule jobs in Housecall Pro unless the customer confirms they are in our service area. Never quote prices on the call; always say the technician will provide a written estimate on site.
+[00:01:26] Customer: OK that wraps it up.
+[00:01:29] Agent: Great. We also provide general inquiries routing to the main office line.
