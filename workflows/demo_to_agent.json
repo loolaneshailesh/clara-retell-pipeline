@@ -1,0 +1,101 @@
+{
+  "name": "Pipeline A - Demo to Agent v1",
+  "nodes": [
+    {
+      "id": "node-1",
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [200, 300],
+      "parameters": {}
+    },
+    {
+      "id": "node-2",
+      "name": "Set Account Inputs",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3,
+      "position": [420, 300],
+      "parameters": {
+        "mode": "manual",
+        "fields": {
+          "values": [
+            { "name": "account_id", "type": "stringValue", "stringValue": "acme_fire_001" },
+            { "name": "demo_path", "type": "stringValue", "stringValue": "/project/dataset/demo/acme_fire_001.txt" },
+            { "name": "prompt_template", "type": "stringValue", "stringValue": "/project/config/prompt_templates/base_system_prompt.txt" }
+          ]
+        },
+        "include": "none",
+        "options": {}
+      }
+    },
+    {
+      "id": "node-3",
+      "name": "Normalize Transcript",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [640, 300],
+      "parameters": {
+        "command": "python /project/scripts/transcript_normalizer.py --input {{ $json.demo_path }} --output /project/outputs/tmp/{{ $json.account_id }}_demo_normalized.txt && echo OK"
+      }
+    },
+    {
+      "id": "node-4",
+      "name": "Extract Memo v1",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [860, 300],
+      "parameters": {
+        "command": "python /project/scripts/extract_account_memo.py --input /project/outputs/tmp/{{ $('Set Account Inputs').item.json.account_id }}_demo_normalized.txt --output /project/outputs/accounts/{{ $('Set Account Inputs').item.json.account_id }}/v1/memo.json --account-id {{ $('Set Account Inputs').item.json.account_id }}"
+      }
+    },
+    {
+      "id": "node-5",
+      "name": "Generate Agent Spec v1",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [1080, 300],
+      "parameters": {
+        "command": "python /project/scripts/generate_retell_spec.py --memo /project/outputs/accounts/{{ $('Set Account Inputs').item.json.account_id }}/v1/memo.json --version v1 --output /project/outputs/accounts/{{ $('Set Account Inputs').item.json.account_id }}/v1/agent_spec.json --prompt-template {{ $('Set Account Inputs').item.json.prompt_template }}"
+      }
+    },
+    {
+      "id": "node-6",
+      "name": "Log Completion",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3,
+      "position": [1300, 300],
+      "parameters": {
+        "mode": "manual",
+        "fields": {
+          "values": [
+            { "name": "status", "type": "stringValue", "stringValue": "Pipeline A complete" },
+            { "name": "account_id", "type": "stringValue", "stringValue": "={{ $('Set Account Inputs').item.json.account_id }}" },
+            { "name": "memo_path", "type": "stringValue", "stringValue": "=/project/outputs/accounts/{{ $('Set Account Inputs').item.json.account_id }}/v1/memo.json" },
+            { "name": "spec_path", "type": "stringValue", "stringValue": "=/project/outputs/accounts/{{ $('Set Account Inputs').item.json.account_id }}/v1/agent_spec.json" }
+          ]
+        },
+        "options": {}
+      }
+    }
+  ],
+  "connections": {
+    "Manual Trigger": {
+      "main": [[{ "node": "Set Account Inputs", "type": "main", "index": 0 }]]
+    },
+    "Set Account Inputs": {
+      "main": [[{ "node": "Normalize Transcript", "type": "main", "index": 0 }]]
+    },
+    "Normalize Transcript": {
+      "main": [[{ "node": "Extract Memo v1", "type": "main", "index": 0 }]]
+    },
+    "Extract Memo v1": {
+      "main": [[{ "node": "Generate Agent Spec v1", "type": "main", "index": 0 }]]
+    },
+    "Generate Agent Spec v1": {
+      "main": [[{ "node": "Log Completion", "type": "main", "index": 0 }]]
+    }
+  },
+  "active": false,
+  "settings": { "executionOrder": "v1" },
+  "tags": []
+}
