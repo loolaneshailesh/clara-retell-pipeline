@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+*.egg
+
+# n8n data
+n8n_data/
+
+# Outputs (generated at runtime)
+outputs/
+changelog/
+
+# Temp files
+*.tmp
+*.log
+.DS_Store
+
+# Env files
+.env
+.env.*
+
+# IDE
+.idea/
+.vscode/
+*.swp
