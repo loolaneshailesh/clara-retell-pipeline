@@ -1,0 +1,11 @@
+[00:00:05] Agent: This is Green Pest Control. We offer residential and commercial pest elimination and prevention services.
+[00:00:14] Customer: When are you open?
+[00:00:17] Agent: Monday through Friday 8am to 5pm mountain time. Office is at 321 Pine Street, Denver, CO 80201.
+[00:00:25] Customer: What is an emergency for you?
+[00:00:28] Agent: A severe wasp or hornet infestation where someone is at risk of being stung is considered an emergency. A large visible rodent infestation inside a restaurant or food service facility is also an emergency.
+[00:00:42] Customer: How do you handle after-hours emergencies?
+[00:00:46] Agent: Contact the on-call exterminator first. If unavailable, reach the service manager. Always collect name, callback number, address, and type of pest. If no one is reachable, take a message marked urgent.
+[00:00:59] Customer: Non-emergencies?
+[00:01:02] Agent: For scheduling inspections, route to office. For billing, route to accounting. For estimates, route to the sales team.
+[00:01:11] Customer: Any rules around scheduling?
+[00:01:14] Agent: Do not book same-day service without manager approval. Never promise specific technician assignment on the call. Do not discuss chemical types; say the technician will advise on site.
